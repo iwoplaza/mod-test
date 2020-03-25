@@ -75,3 +75,21 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            // These should be the default ForgeGradle artifacts
+            // sourceJar is sometimes sourcesJar?
+            artifact jar
+            artifact sourceJar
+            // artifact deobfJar
+        }
+    }
+    repositories {
+        maven {
+            url = "${projectDir}/maven"
+        }
+    }
+}
